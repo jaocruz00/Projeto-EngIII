@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Painel de Controle - Frequências</title>
+    <style>
+        /* Estilos específicos para o Painel de Controle (Frequências) */
+
+        h1.titulo-painel {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .tabela-frequencias {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .tabela-frequencias th, .tabela-frequencias td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            height: 60px; /* Altura para simular o modelo */
+        }
+
+        .tabela-frequencias th {
+            background-color: #f2f2f2;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .header-acamp {
+            background-color: #3498db; /* Azul base */
+            color: white;
+            font-size: 14px;
+        }
+        
+        /* Cores variadas para os acampamentos */
+        #acamp-1 { background-color: #55acee; } /* Mais claro */
+        #acamp-2 { background-color: #4dc4c4; }
+        #acamp-3 { background-color: #3498db; }
+        #acamp-4 { background-color: #4a69bd; }
+        #acamp-5 { background-color: #3b5998; } /* Mais escuro */
+
+
+        .nome-participante {
+            background-color: #ecf0f1;
+            text-align: left;
+            font-weight: bold;
+            cursor: pointer; /* Indica que é clicável */
+            position: relative;
+        }
+
+        /* Simula o ícone de coração da imagem */
+        .nome-participante:before {
+            content: '▶︎';
+            color: black;
+            margin-right: 5px;
+            font-size: 18px;
+            vertical-align: middle;
+        }
+
+        .check-mark {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Ficha de Cadastro (Parte inferior da imagem) */
+        #ficha-cadastro {
+            width: 70%;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: none; /* Inicia oculto */
+        }
+
+        #ficha-cadastro h3 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .ficha-dados-item {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .ficha-dados-item label {
+            font-weight: bold;
+            width: 200px; /* Alinha os campos */
+            color: #555;
+        }
+        
+        .ficha-dados-item span {
+            flex-grow: 1;
+            border-bottom: 1px dashed #ccc;
+            padding-left: 10px;
+        }
+        
+        .section-header {
+            background-color: #f9f9f9;
+            padding: 5px 0;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="cabecario">
+        Teste de centralização
+        <div class="cabecario2">nome:     e      acampamento:</div>
+    </div>
+
+    <h1 class="titulo-painel">Frequências</h1>
+    <p style="text-align: center;">Acampamento XXX</p>
+
+    <table class="tabela-frequencias">
+        <thead>
+            <tr>
+                <th style="width: 15%;">NOMES</th>
+                <th class="header-acamp" id="acamp-1">ACAMP 1</th>
+                <th class="header-acamp" id="acamp-2">ACAMP 2</th>
+                <th class="header-acamp" id="acamp-3">ACAMP 3</th>
+                <th class="header-acamp" id="acamp-4">ACAMP 4</th>
+                <th class="header-acamp" id="acamp-5">ACAMP 5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="nome-participante" onclick="mostrarFicha('joao', 'Nº 001');">João</td>
+                <td style="background-color: #55acee;"><span class="check-mark">&#10003;</span></td>
+                <td style="background-color: #4dc4c4;"><span class="check-mark">&#10003;</span></td>
+                <td style="background-color: #3498db;"></td>
+                <td style="background-color: #4a69bd;"></td>
+                <td style="background-color: #3b5998;"></td>
+            </tr>
+            <tr>
+                <td class="nome-participante" onclick="mostrarFicha('paulo', 'Nº 002');">Paulo</td>
+                <td style="background-color: #55acee;"></td>
+                <td style="background-color: #4dc4c4;"><span class="check-mark">&#10003;</span></td>
+                <td style="background-color: #3498db;"><span class="check-mark">&#10003;</span></td>
+                <td style="background-color: #4a69bd;"></td>
+                <td style="background-color: #3b5998;"><span class="check-mark">&#10003;</span></td>
+            </tr>
+            <tr>
+                <td class="nome-participante" onclick="mostrarFicha('carlos', 'Nº 003');">Carlos</td>
+                <td style="background-color: #55acee;"><span class="check-mark">&#10003;</span></td>
+                <td style="background-color: #4dc4c4;"></td>
+                <td style="background-color: #3498db;"></td>
+                <td style="background-color: #4a69bd;"><span class="check-mark">&#10003;</span></td>
+                <td style="background-color: #3b5998;"></td>
+            </tr>
+            <tr>
+                <td class="nome-participante" onclick="mostrarFicha('pedro', 'Nº 004');">Pedro</td>
+                <td style="background-color: #55acee;"></td>
+                <td style="background-color: #4dc4c4;"></td>
+                <td style="background-color: #3498db;"><span class="check-mark">&#10003;</span></td>
+                <td style="background-color: #4a69bd;"></td>
+                <td style="background-color: #3b5998;"></td>
+            </tr>
+            </tbody>
+    </table>
+
+    <div style="text-align: center; margin-top: 30px;">
+        
+        <a href=""><button id="botoes" type="button" style="background-color: #27ae60;">+ ADD PLANILHA</button></a>
+
+        <button id="botoes" type="button" style="background-color: #3498db;">+ ADD PARTICIPANTE</button>
+    </div>
+    
+    <div id="ficha-cadastro">
+        <h1 id="ficha-nome" style="text-align: left;">[Nome do Participante]</h1>
+        <p id="ficha-codigo" style="text-align: left; font-weight: bold; color: #7f8c8d;">[Código]</p>
+
+        <div class="section-header">Event Information</div>
+        <div class="ficha-dados-item"><label>Event Name:</label><span id="event-name">Acampamento Hacoré - Verão 2025</span></div>
+        <div class="ficha-dados-item"><label>Event Date:</label><span id="event-date">2025-01-15</span></div>
+        <div class="ficha-dados-item"><label>Event Location:</label><span id="event-location">Local X, Cidade Y</span></div>
+
+        <div class="section-header">Personal Information</div>
+        <div class="ficha-dados-item"><label>Full Name:</label><span id="full-name"></span></div>
+        <div class="ficha-dados-item"><label>Email Address:</label><span id="email">simulado@email.com</span></div>
+        <div class="ficha-dados-item"><label>Phone Number:</label><span id="phone-number">(14) 99999-0000</span></div>
+        <div class="ficha-dados-item"><label>Address:</label><span id="address">Rua Simulação, Nr 123, Bairro Exemplo, SP, 19900-000</span></div>
+
+        <div class="section-header">Additional Information</div>
+        <div class="ficha-dados-item"><label>Tipo Sanguíneo:</label><span id="sangue">O</span></div>
+        <div class="ficha-dados-item"><label>Especialidade:</label><span id="especialidade">Pediatria</span></div>
+        <div class="ficha-dados-item"><label>Resenha Profissional:</label><span id="resenha">Experiência em clínica geral e pronto atendimento.</span></div>
+        <div class="ficha-dados-item"><label>Cor da Consultoria:</label><span id="cor">Azul</span></div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <div style="display: inline-block; text-align: left; margin-right: 50px;">
+                <p>Baixar e assinar contrato:</p>
+                <button style="background-color: #c0392b; color: white; padding: 10px; border-radius: 5px; border: none;">Contrato/Inscrição (PDF)</button>
+            </div>
+            
+            <div style="display: inline-block; text-align: center;">
+                 <p>Cod: <span id="cracha-cod">AB000X</span></p>
+                 <img src="./QRCode.png" alt="QR Code" style="width: 80px; height: 80px; display: block; margin: 0 auto;">
+                 <button style="background-color: #2980b9; color: white; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">Gerar Pulseira/Crachá</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="cod-entrada"></div>
+
+    <script>
+        // Dados de simulação para a ficha de cadastro
+        const participantes = {
+            joao: { fullName: "João da Silva", cod: "AB0001", sangue: "A", especialidade: "Cirurgião" },
+            paulo: { fullName: "Paulo Souza", cod: "AB0002", sangue: "B", especialidade: "Clinica Geral" },
+            carlos: { fullName: "Carlos Arruda", cod: "AB0003", sangue: "AB", especialidade: "Pediatria" },
+            pedro: { fullName: "Pedro Nogueira", cod: "AB0004", sangue: "O", especialidade: "Cirurgião" }
+        };
+
+        function mostrarFicha(participanteId, codigo) {
+            const ficha = document.getElementById('ficha-cadastro');
+            const dados = participantes[participanteId];
+
+            if (dados) {
+                // Atualiza o cabeçalho da ficha
+                document.getElementById('ficha-nome').textContent = dados.fullName;
+                document.getElementById('ficha-codigo').textContent = codigo;
+                document.getElementById('full-name').textContent = dados.fullName;
+                document.getElementById('cracha-cod').textContent = dados.cod;
+                
+                // Atualiza alguns dados adicionais
+                document.getElementById('sangue').textContent = dados.sangue;
+                document.getElementById('especialidade').textContent = dados.especialidade;
+                
+                // Exibe a ficha
+                ficha.style.display = 'block';
+                
+                // Rola a página para a ficha
+                ficha.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                ficha.style.display = 'none';
+            }
+        }
+        
+        // Inicializa o clique do botão "Painel de controle" na pg1.html para esta página
+        // Não é necessário alterar a pg1.html, mas é o fluxo de navegação esperado.
+    </script>
+
+
+<div > 
+    
+</div>
+ 
+
+
+
+<div id="cod-entrada">
+<center>
+        <div id="tabela-cod">
+    <table border="2" style="font-family: Arial, sans-serif;  text-align: center; font-size: 79px;">
+        <tr>
+            <td>Codigo: </td>
+            <td>AB0001</td>
+            <td> &emsp; &emsp; &emsp; &emsp;</td>
+            <td colspan="2"><img src="QRCode.png" alt=""></td>
+            
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        
+        </tr>
+
+
+    <a href="painel-controle.html"><button id="botoes" type="button">Painel de controle</button></a>
+    <a href="pag2.html"><button id="botoes" type="button">Cadastrar Participante</button></a>
+     </center>
+
+
+    </table>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

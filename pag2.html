@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="cabecario">
+Teste de centralização
+      <div class="cabecario2">nome:     e      acampamento:</div>
+</div>
+
+    <div id="tabela-forms">
+                   <center> 
+                    <br>   
+                <h2>Âncoras</h2>
+                <br>
+              
+<form action="pag3.html" method="POST" enctype="multipart/form-data">
+    
+        <table border="0"> 
+        <tbody>
+            <tr>
+           
+                    <td class="td1">Sobrenome</td>
+                    <td><input type="text" name="txt_sobrenome" placeholder="Walter Arruda é Arruda" required></td>
+                </tr>
+                
+
+                <tr>
+                    <td class="td1">Nome</td>
+                    <td><input type="text" name="txt_nome" placeholder="Digite seu nome " required></td>
+                </tr>
+
+                <tr>
+                    <td class="td1">Senha</td>
+                    <td><input type="password" name="txt_senha" placeholder="Mínimo 6 caracteres" minlength="6" required></td>
+                </tr>
+
+                <tr>
+                    <td class="td1">Sangue:</td>
+                    <td>(<input type="radio" name="sangue" value="A">)-A | (<input type="radio" name="sangue" value="B">)-B | (<input type="radio" name="sangue" value="AB">)-AB | (<input type="radio" name="sangue" value="O">)-O</td>
+                </tr>
+
+                <tr>
+                    <td class="td1">Disciplinas Habilitadas:</td>
+                    <td colspan="2"><select name="disciplinas" multiple size="5">
+                        <option>Matemática</option>
+                        <option>Português</option>
+                        <option>Geografia</option>
+                        <option>História</option>
+                        <option>Ciências</option></select>
+                        <small style="vertical-align: top;">Segure CTRL+Clique para marcar dois ou mais itens</small ></td>
+                </tr>
+
+                <tr>
+                    <td class="td1">Especialidade </td>
+                    <td>
+                        <select name="sel_estado" required>
+                           
+                            <option value="cirurgião">Cirurgião</option>
+                            <option value="Pediatria">Pediatria</option>
+                            <option value="Clinica Geral">Clinica geral </option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td1">Escola de Graduação</td>
+                    <td>
+                        <select name="sel_estado" required>
+                            <option value="SP">PUC</option>
+                            <option value="RJ">USP</option>
+                            <option value="MG">FATEC</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td1">Cidade de nascimento</td>
+                    <td>
+                        <select name="sel_estado" required>
+                           
+                            <option value="SP">São Paulo</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="MG">Minas Gerais</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td1">Logradouro moradia:</td><td class="campo-form"><input type="text" name="logradouro" size="50"></td>
+                </tr>
+
+                    <tr>
+                        <td class="td1">Complemento:</td><td class="campo-form"><input type="text" name="complemento" size="50" placeholder="Rua tal, Nr 00" required></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Telefone:</td><td class="campo-form"><input type="tel" name="telefone" placeholder="Somente numeros" required></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Bairro:</td><td class="campo-form"><input type="text" name="bairro" size="30"></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">CEP:</td><td class="campo-form"><input type="text" name="cep" size="10"></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Nascimento:</td>
+                        <td> <input type="date" name="data_nascimento" placeholder="AAAA-MM-DD" required> </td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Data de Cadastro:</td>
+                        <td> <input type="date" name="data_nascimento" placeholder="AAAA-MM-DD" required> </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td1">Resenha Profissional:</td><td class="campo-form"><textarea name="resenha" rows="5" cols="50" placeholder="Entre com a experiência profissional do médico"></textarea></td>
+                    </tr>
+
+
+
+
+                <tr>
+                    <td class="td1">Porta da consultoria</td>
+                    <td>
+                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoA">Branco</label>
+                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoB"> Pardo</label>
+                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoC"> Preto</label>
+                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoC"> Amarelo</label>
+                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoC"> Azul</label>
+                    </td>
+                </tr>
+
+                 <tr>
+                    <td class="td1">Locais de Atendimento</td>
+            
+                       <td colspan="2"><select name="disciplinas" multiple size="5">
+                           
+                            <option value="Ourinhos">Ourinhos</option>
+                            <option value="staCruz">Sta Cruz do Rio Pardo</option>
+                            <option value="Chavantes">Chavantes</option>
+                            <option value="Ipaussu">Ipaussu</option>
+                            <option value="Ibirarema">Ibirarema</option></select>
+                            <small style="vertical-align: top; ">Segure CTRL+Clique para marcar dois ou mais itens</small ></td>
+                     
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="td1">Cor padrão de moveis</td>
+                    <td>
+                        <input type="color" name="cor_preferida" value="#0000ff">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">Valor disponível para pagar aluguel:</td>
+                    <td ><select name="aluguel">
+                    <option value="1000">1000</option>
+                    <option value="2000">2000</option>
+                    <option value="3000">3000</option></select>
+                </td></tr>
+
+
+                <tr>
+                    <td></td>
+                    <td >                      
+                        <input type="reset" value="LIMPAR DADOS">
+                        <input type="submit" value="ENVIAR DADOS">
+                    </td>
+                </tr>
+            </tbody>
+        </center>
+    </table>
+    </form>
+    
+</center>       
+    </div>
+
+<div id="cod-entrada"></div>
+    
+
+
+</body>
+</html>
