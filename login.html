@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Login - Conecta Jovem</title>
+    </head>
+<body class="login">
+    <div class="login">
+        <h1>Login</h1>
+        
+<div class="login">
+        <h1>Login</h1>
+        
+        <script>
+            function displayStatusMessage() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const status = urlParams.get('status');
+                const msg = urlParams.get('msg');
+                const loginDiv = document.querySelector('.login');
+
+                if (status && msg) {
+                    const p = document.createElement('p');
+                    p.textContent = msg;
+                    p.style.textAlign = 'center';
+                    p.style.padding = '5px';
+                    p.style.borderRadius = '5px';
+                    p.style.fontWeight = 'bold';
+                    
+                    if (status === 'erro') {
+                        p.style.backgroundColor = '#ffdddd';
+                        p.style.color = '#d8000c';
+                    } else if (status === 'sucesso') {
+                        p.style.backgroundColor = '#dff0d8';
+                        p.style.color = '#3c763d';
+                    }
+                    // Insere a mensagem logo antes do formulário
+                    loginDiv.insertBefore(p, loginDiv.querySelector('form'));
+                }
+            }
+            window.onload = displayStatusMessage;
+        </script>
+        <form action="login.php" method="post">
+    
+
+
+
+
+
+        <form action="login.php" method="post">
+            
+            <input type="text" name="nome" placeholder="Nome de Usuário" required="required" />
+            <input type="password" name="senha" placeholder="Senha" required="required" />
+            
+            <button type="submit" class="btn zoom-shadow">Entrar</button>
+            
+        </form>
+        
+        <br><br> 
+        
+        <a href="cadastrar-login.html">
+            <button type="button" class="btn zoom-shadow">Criar conta</button>
+        </a>
+        
+       
+    </div>
+</body>
+</html>

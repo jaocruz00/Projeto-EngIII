@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Relatórios Gerenciais</title>
+    <style>
+        /* Estilos baseados em painel-controle.html e style.css */
+        .container-relatorios {
+            width: 80%;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+        }
+        .container-relatorios h1 {
+            text-align: center;
+            color: #3498db;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .bloco-filtro {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .bloco-filtro label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .bloco-filtro select, .bloco-filtro input {
+            padding: 8px;
+            margin-right: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .resultado-relatorio {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #cce5ff;
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            display: none; /* Inicia oculto */
+        }
+        .resultado-relatorio h3 {
+            border-bottom: 1px dashed #3498db;
+            padding-bottom: 5px;
+        }
+        .tabela-resultado {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .tabela-resultado th, .tabela-resultado td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .tabela-resultado th {
+            background-color: #3498db;
+            color: white;
+        }
+        .export-buttons button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            background-color: #2ecc71; /* Verde */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cabecario">
+        Teste de centralização
+        <div class="cabecario2">nome:     e      acampamento:</div>
+    </div>
+
+    <div class="container-relatorios">
+        <h1>⚙️ Gerador de Relatórios</h1>
+        
+        <div class="bloco-filtro">
+            <label for="tipoRelatorio">Selecione o Tipo de Relatório:</label>
+            <select id="tipoRelatorio" onchange="mostrarFiltros(this.value)">
+                <option value="">-- Selecione --</option>
+                <option value="presenca">1. Presença em Acampamento</option>
+                <option value="arrecadacao">2. Arrecadação/Pagamentos</option>
+                <option value="eventos-periodo">3. Eventos por Período</option>
+                <option value="participantes">4. Participantes</option>
+                <option value="patrocinadores">5. Patrocinadores</option>
+            </select>
+        </div>
+
+        <div id="filtros-presenca" class="bloco-filtro" style="display: none;">
+            <h3>Filtros de Presença</h3>
+            <label for="acampamento">Selecione o Acampamento:</label>
+            <select id="acampamento">
+                <option value="ACAMP 1">ACAMP 1</option>
+                <option value="ACAMP 2">ACAMP 2</option>
+                <option value="ACAMP 3">ACAMP 3</option>
+            </select>
+            
+            <label for="tipoPresenca" style="margin-top: 10px;">Tipo de Relatório de Presença:</label>
+            <select id="tipoPresenca">
+                <option value="comparacao">Maior número de Presença (Comparação entre Acampamentos)</option>
+                <option value="individual">Presença por Aluno Individualmente</option>
+            </select>
+        </div>
+        
+        <div id="filtros-arrecadacao" class="bloco-filtro" style="display: none;">
+            <h3>Filtros de Arrecadação</h3>
+            <label for="statusPagamento">Status de Pagamento:</label>
+            <select id="statusPagamento">
+                <option>Todos</option>
+                <option>Validado</option>
+                <option>Pendente</option>
+            </select>
+        </div>
+
+        <div id="filtros-eventos-periodo" class="bloco-filtro" style="display: none;">
+            <h3>2.3 Relatório de Eventos por Período</h3>
+            <label for="dataInicio">Data Inicial:</label>
+            <input type="date" id="dataInicio">
+            
+            <label for="dataFim">Data Final:</label>
+            <input type="date" id="dataFim">
+        </div>
+        
+        <div id="filtros-participantes" class="bloco-filtro" style="display: none;">
+            <h3>2.3 Relatório de Participantes (Filtros múltiplos)</h3>
+            <label>Filtros:</label>
+            <input type="text" placeholder="Nome/CPF">
+            <select><option>Grupo A</option><option>Grupo B</option></select>
+            <select><option>Evento X</option><option>Evento Y</option></select>
+            <select><option>Status Pgto</option><option>Pago</option><option>Pendente</option></select>
+            <select><option>Presença</option><option>Sim</option><option>Não</option></select>
+        </div>
+
+        <div id="filtros-patrocinadores" class="bloco-filtro" style="display: none;">
+            <h3>Filtros de Patrocinadores</h3>
+            <label>Filtros:</label>
+            <select><option>Todos</option><option>Investimento Alto</option><option>Investimento Médio</option></select>
+        </div>
+
+        <center>
+            <button id="botoes" type="button" style="background-color: #27ae60;" onclick="gerarRelatorio()">GERAR RELATÓRIO</button>
+        </center>
+        
+        <div id="area-resultado" class="resultado-relatorio">
+            <h3 id="titulo-resultado">Resultado do Relatório</h3>
+            
+            <div id="tabela-conteudo">
+                </div>
+
+            <div class="export-buttons" style="text-align: right; margin-top: 20px;">
+                <button onclick="exportar('PDF')">Exportar PDF</button>
+                <button onclick="exportar('Excel')">Exportar Excel</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="cod-entrada"></div>
+
+    <script>
+        // Função para mostrar os filtros específicos baseados na seleção
+        function mostrarFiltros(tipo) {
+            // Oculta todos os blocos de filtro
+            document.getElementById('filtros-presenca').style.display = 'none';
+            document.getElementById('filtros-arrecadacao').style.display = 'none';
+            document.getElementById('filtros-eventos-periodo').style.display = 'none';
+            document.getElementById('filtros-participantes').style.display = 'none';
+            document.getElementById('filtros-patrocinadores').style.display = 'none';
+            document.getElementById('area-resultado').style.display = 'none';
+
+            // Exibe apenas o bloco de filtro relevante
+            if (tipo === 'presenca') {
+                document.getElementById('filtros-presenca').style.display = 'block';
+            } else if (tipo === 'arrecadacao') {
+                document.getElementById('filtros-arrecadacao').style.display = 'block';
+            } else if (tipo === 'eventos-periodo') {
+                document.getElementById('filtros-eventos-periodo').style.display = 'block';
+            } else if (tipo === 'participantes') {
+                document.getElementById('filtros-participantes').style.display = 'block';
+            } else if (tipo === 'patrocinadores') {
+                document.getElementById('filtros-patrocinadores').style.display = 'block';
+            }
+        }
+        
+        // Função para simular a geração de relatório
+        function gerarRelatorio() {
+            const tipo = document.getElementById('tipoRelatorio').value;
+            const titulo = document.getElementById('titulo-resultado');
+            const conteudo = document.getElementById('tabela-conteudo');
+            const resultadoArea = document.getElementById('area-resultado');
+
+            if (!tipo) {
+                alert("Por favor, selecione um tipo de relatório.");
+                return;
+            }
+
+            titulo.textContent = `Resultado: Relatório de ${tipo.charAt(0).toUpperCase() + tipo.slice(1).replace('-', ' ')}`;
+            conteudo.innerHTML = ''; // Limpa conteúdo anterior
+            
+            let tabelaHTML = `<table class="tabela-resultado">`;
+            let dadosSimulados = [];
+
+            // 1. Geração de dados simulados baseada no tipo de relatório
+            if (tipo === 'presenca') {
+                const acampamento = document.getElementById('acampamento').value;
+                const tipoPresenca = document.getElementById('tipoPresenca').value;
+
+                if (tipoPresenca === 'comparacao') {
+                    // Relatório de comparação (3. Ordem alfabética aplicada ao Acampamento)
+                    dadosSimulados = [
+                        { Acampamento: 'ACAMP 1', Presentes: 45, Ausentes: 5, Total: 50 },
+                        { Acampamento: 'ACAMP 2', Presentes: 55, Ausentes: 10, Total: 65 },
+                        { Acampamento: 'ACAMP 3', Presentes: 30, Ausentes: 20, Total: 50 }
+                    ].sort((a, b) => a.Acampamento.localeCompare(b.Acampamento));
+                    
+                    tabelaHTML += `<thead><tr><th>Acampamento</th><th>Presentes</th><th>Ausentes</th><th>Total</th></tr></thead><tbody>`;
+                    dadosSimulados.forEach(d => {
+                        tabelaHTML += `<tr><td>${d.Acampamento}</td><td>${d.Presentes}</td><td>${d.Ausentes}</td><td>${d.Total}</td></tr>`;
+                    });
+
+                } else if (tipoPresenca === 'individual') {
+                    // Presença por aluno individualmente (3. Ordem alfabética aplicada ao Nome)
+                    dadosSimulados = [
+                        { Nome: 'Ana Silva', ACAMP1: 'Sim', ACAMP2: 'Não', ACAMP3: 'Sim' },
+                        { Nome: 'João Souza', ACAMP1: 'Sim', ACAMP2: 'Sim', ACAMP3: 'Não' },
+                        { Nome: 'Carlos Lima', ACAMP1: 'Não', ACAMP2: 'Sim', ACAMP3: 'Sim' }
+                    ].sort((a, b) => a.Nome.localeCompare(b.Nome));
+                    
+                    tabelaHTML += `<thead><tr><th>Nome</th><th>ACAMP 1</th><th>ACAMP 2</th><th>ACAMP 3</th></tr></thead><tbody>`;
+                    dadosSimulados.forEach(d => {
+                        tabelaHTML += `<tr><td>${d.Nome}</td><td>${d.ACAMP1}</td><td>${d.ACAMP2}</td><td>${d.ACAMP3}</td></tr>`;
+                    });
+                }
+            } else if (tipo === 'arrecadacao') {
+                // Relatório de Arrecadação (Pagamentos validados)
+                dadosSimulados = [
+                    { Participante: 'Ana Silva', Valor: 'R$ 500,00', Status: 'Validado', Evento: 'Acampamento X' },
+                    { Participante: 'Carlos Lima', Valor: 'R$ 500,00', Status: 'Pendente', Evento: 'Acampamento Y' },
+                    { Participante: 'João Souza', Valor: 'R$ 750,00', Status: 'Validado', Evento: 'Acampamento X' }
+                ].sort((a, b) => a.Participante.localeCompare(b.Participante));
+                
+                tabelaHTML += `<thead><tr><th>Participante</th><th>Valor</th><th>Status</th><th>Evento</th></tr></thead><tbody>`;
+                dadosSimulados.forEach(d => {
+                    tabelaHTML += `<tr><td>${d.Participante}</td><td>${d.Valor}</td><td>${d.Status}</td><td>${d.Evento}</td></tr>`;
+                });
+            } else if (tipo === 'eventos-periodo') {
+                // 2.3 Relatório de Eventos por Período
+                const inicio = document.getElementById('dataInicio').value;
+                const fim = document.getElementById('dataFim').value;
+                
+                dadosSimulados = [
+                    { Nome: 'Eventos: Verão 2024', Data: '2024-01-15', Local: 'Fazenda X', Participantes: 120 },
+                    { Nome: 'Eventos: Inverno 2024', Data: '2024-07-20', Local: 'Sítio Y', Participantes: 95 }
+                ].sort((a, b) => a.Nome.localeCompare(b.Nome));
+                
+                tabelaHTML += `<thead><tr><th>Nome do Evento</th><th>Data</th><th>Local</th><th>Participantes</th></tr></thead><tbody>`;
+                dadosSimulados.forEach(d => {
+                    tabelaHTML += `<tr><td>${d.Nome}</td><td>${d.Data}</td><td>${d.Local}</td><td>${d.Participantes}</td></tr>`;
+                });
+            } else if (tipo === 'participantes') {
+                // 2.3 Relatório de Participantes
+                 dadosSimulados = [
+                    { Nome: 'Ana Silva', CPF: '111.111.111-11', Grupo: 'A', Pagto: 'Pago', Presenca: 'Sim' },
+                    { Nome: 'Bruno Santos', CPF: '222.222.222-22', Grupo: 'B', Pagto: 'Pendente', Presenca: 'Não' },
+                    { Nome: 'Diana Souza', CPF: '333.333.333-33', Grupo: 'A', Pagto: 'Pago', Presenca: 'Sim' }
+                ].sort((a, b) => a.Nome.localeCompare(b.Nome));
+                
+                tabelaHTML += `<thead><tr><th>Nome</th><th>CPF</th><th>Grupo</th><th>Pagamento</th><th>Presença</th></tr></thead><tbody>`;
+                dadosSimulados.forEach(d => {
+                    tabelaHTML += `<tr><td>${d.Nome}</td><td>${d.CPF}</td><td>${d.Grupo}</td><td>${d.Pagto}</td><td>${d.Presenca}</td></tr>`;
+                });
+            } else if (tipo === 'patrocinadores') {
+                // Relatório de Patrocinadores
+                dadosSimulados = [
+                    { Patrocinador: 'Tech Solutions', Valor: 'R$ 10.000,00', Evento: 'Acampamento X' },
+                    { Patrocinador: 'Café Premium', Valor: 'R$ 2.500,00', Evento: 'Acampamento Y' },
+                    { Patrocinador: 'Marketing Ações', Valor: 'R$ 5.000,00', Evento: 'Acampamento X' }
+                ].sort((a, b) => a.Patrocinador.localeCompare(b.Patrocinador));
+                
+                tabelaHTML += `<thead><tr><th>Patrocinador</th><th>Valor Investido</th><th>Evento</th></tr></thead><tbody>`;
+                dadosSimulados.forEach(d => {
+                    tabelaHTML += `<tr><td>${d.Patrocinador}</td><td>${d.Valor}</td><td>${d.Evento}</td></tr>`;
+                });
+            }
+
+            tabelaHTML += `</tbody></table>`;
+            conteudo.innerHTML = tabelaHTML;
+            resultadoArea.style.display = 'block';
+        }
+        
+        // Função para simular a exportação
+        function exportar(formato) {
+            const titulo = document.getElementById('titulo-resultado').textContent;
+            if (titulo) {
+                alert(`Simulando exportação do "${titulo}" para o formato ${formato}.`);
+            } else {
+                alert(`Simulando exportação para ${formato}.`);
+            }
+        }
+        
+        // Função que verifica os parâmetros da URL para exibir o status (copiado de login.html)
+        function getUrlParameter(name) {
+             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+             var results = regex.exec(location.search);
+             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+    </script>
+
+</body>
+</html>

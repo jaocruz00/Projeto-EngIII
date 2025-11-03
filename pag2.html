@@ -16,177 +16,124 @@ Teste de centralização
 </div>
 
     <div id="tabela-forms">
-                   <center> 
-                    <br>   
-                <h2>Âncoras</h2>
-                <br>
+                   
+            
               
 <form action="pag3.html" method="POST" enctype="multipart/form-data">
     
-        <table border="0"> 
+        
         <tbody>
-            <tr>
-           
-                    <td class="td1">Sobrenome</td>
-                    <td><input type="text" name="txt_sobrenome" placeholder="Walter Arruda é Arruda" required></td>
-                </tr>
-                
-
-                <tr>
-                    <td class="td1">Nome</td>
-                    <td><input type="text" name="txt_nome" placeholder="Digite seu nome " required></td>
-                </tr>
-
-                <tr>
-                    <td class="td1">Senha</td>
-                    <td><input type="password" name="txt_senha" placeholder="Mínimo 6 caracteres" minlength="6" required></td>
-                </tr>
-
-                <tr>
+                    Nome Completo
+                    <input type="text" name="txt_nomeCompleto" placeholder="nome e sobreonome" required>
+                   
+                    Nome do responsavel
+                    <input type="text" name="txt_nomeResponsavel" placeholder="Digite o nome " required>
+                                
+                    Alergia
+                    <input type="text" name="alergia" placeholder="caso haja" minlength="6" required>
+                    <table border="1">
+                    <tr>
                     <td class="td1">Sangue:</td>
-                    <td>(<input type="radio" name="sangue" value="A">)-A | (<input type="radio" name="sangue" value="B">)-B | (<input type="radio" name="sangue" value="AB">)-AB | (<input type="radio" name="sangue" value="O">)-O</td>
-                </tr>
-
-                <tr>
-                    <td class="td1">Disciplinas Habilitadas:</td>
-                    <td colspan="2"><select name="disciplinas" multiple size="5">
-                        <option>Matemática</option>
-                        <option>Português</option>
-                        <option>Geografia</option>
-                        <option>História</option>
-                        <option>Ciências</option></select>
-                        <small style="vertical-align: top;">Segure CTRL+Clique para marcar dois ou mais itens</small ></td>
-                </tr>
-
-                <tr>
-                    <td class="td1">Especialidade </td>
-                    <td>
-                        <select name="sel_estado" required>
-                           
-                            <option value="cirurgião">Cirurgião</option>
-                            <option value="Pediatria">Pediatria</option>
-                            <option value="Clinica Geral">Clinica geral </option>
-                        </select>
+                    <td><input type="radio"> 
+                        <input type="radio" name="sangue" value="B"> 
+                        <input type="radio" name="sangue" value="AB">
+                        <input type="radio" name="sangue" value="O">
                     </td>
-                </tr>
+                </tr></table>
 
-                <tr>
-                    <td class="td1">Escola de Graduação</td>
-                    <td>
-                        <select name="sel_estado" required>
-                            <option value="SP">PUC</option>
-                            <option value="RJ">USP</option>
-                            <option value="MG">FATEC</option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="td1">Cidade de nascimento</td>
-                    <td>
-                        <select name="sel_estado" required>
-                           
-                            <option value="SP">São Paulo</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="MG">Minas Gerais</option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="td1">Logradouro moradia:</td><td class="campo-form"><input type="text" name="logradouro" size="50"></td>
-                </tr>
-
-                    <tr>
-                        <td class="td1">Complemento:</td><td class="campo-form"><input type="text" name="complemento" size="50" placeholder="Rua tal, Nr 00" required></td>
-                    </tr>
-                    <tr>
-                        <td class="td1">Telefone:</td><td class="campo-form"><input type="tel" name="telefone" placeholder="Somente numeros" required></td>
-                    </tr>
-                    <tr>
-                        <td class="td1">Bairro:</td><td class="campo-form"><input type="text" name="bairro" size="30"></td>
-                    </tr>
-                    <tr>
-                        <td class="td1">CEP:</td><td class="campo-form"><input type="text" name="cep" size="10"></td>
-                    </tr>
-                    <tr>
-                        <td class="td1">Nascimento:</td>
-                        <td> <input type="date" name="data_nascimento" placeholder="AAAA-MM-DD" required> </td>
-                    </tr>
-                    <tr>
-                        <td class="td1">Data de Cadastro:</td>
-                        <td> <input type="date" name="data_nascimento" placeholder="AAAA-MM-DD" required> </td>
-                    </tr>
-
-                    <tr>
-                        <td class="td1">Resenha Profissional:</td><td class="campo-form"><textarea name="resenha" rows="5" cols="50" placeholder="Entre com a experiência profissional do médico"></textarea></td>
-                    </tr>
-
-
-
-
-                <tr>
-                    <td class="td1">Porta da consultoria</td>
-                    <td>
-                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoA">Branco</label>
-                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoB"> Pardo</label>
-                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoC"> Preto</label>
-                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoC"> Amarelo</label>
-                        <label><input type="checkbox" name="chk_opcoes[]" value="OpcaoC"> Azul</label>
-                    </td>
-                </tr>
-
-                 <tr>
-                    <td class="td1">Locais de Atendimento</td>
-            
-                       <td colspan="2"><select name="disciplinas" multiple size="5">
-                           
-                            <option value="Ourinhos">Ourinhos</option>
-                            <option value="staCruz">Sta Cruz do Rio Pardo</option>
-                            <option value="Chavantes">Chavantes</option>
-                            <option value="Ipaussu">Ipaussu</option>
-                            <option value="Ibirarema">Ibirarema</option></select>
-                            <small style="vertical-align: top; ">Segure CTRL+Clique para marcar dois ou mais itens</small ></td>
-                     
-                    </td>
-                </tr>
+                                    
+                    Logradouro moradia:<input type="text" name="logradouro" size="50">
                 
-                <tr>
-                    <td class="td1">Cor padrão de moveis</td>
-                    <td>
-                        <input type="color" name="cor_preferida" value="#0000ff">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td1">Valor disponível para pagar aluguel:</td>
-                    <td ><select name="aluguel">
-                    <option value="1000">1000</option>
-                    <option value="2000">2000</option>
-                    <option value="3000">3000</option></select>
-                </td></tr>
 
+                    
+                        Complemento:<input type="text" name="complemento" size="50" placeholder="Rua tal, Nr 00" required>
+                    
+                    
+                        Telefone:<input type="tel" name="telefone" placeholder="Somente numeros" required>
+                    
+                    
+                        Bairro:<input type="text" name="bairro" size="30">
+                    
+                    
+                        CEP:<input type="text" name="cep" size="10">
+                    
+                    
+                        Nascimento:
+                         <input type="date" name="data_nascimento" placeholder="AAAA-MM-DD" required> 
+                    
+                    
+                        Data de Cadastro:
+                         <input type="date" name="data_nascimento" placeholder="AAAA-MM-DD" required> 
+                    
 
-                <tr>
-                    <td></td>
-                    <td >                      
-                        <input type="reset" value="LIMPAR DADOS">
-                        <input type="submit" value="ENVIAR DADOS">
-                    </td>
-                </tr>
+                    
+                        Observações:
+                        <p><textarea name="resenha" rows="5" cols="50" placeholder="Entre com a experiência profissional do médico"> </textarea></p>
+                    <br> 
+                    <center>
+                            <a href="pg1.html"><button id="botoes" type="submit" style=" background:green; margin-top: 1px; margin-bottom: 1px;">Salvar</button></a>
+                            &emsp;&emsp; &emsp; &emsp; 
+                            <a href="pag2.html"><button id="botoes" type="reset" style="background: brown; margin-bottom: 1px;">Limpar</button></a>
+                    </center>
             </tbody>
         </center>
-    </table>
     
     </form>
-    <button class=" botao"onclick="history.back()">Voltar</button>
-</center>       
     </div>
 
+
+    <center>
+    <a href="painel-controle.html"><button id="botoes" type="button">Painel de controle</button></a>
+    </center>
+
+    <script>
+
+
+    </script>
+
+    <div id="cod-entrada">
+        <div id="tabela-cod">
+    <table border="0" style="font-family: Arial, sans-serif;  text-align: center; font-size: 79px;">
+        <tr>
+            <td>Codigo: </td>
+            <td>AB0001</td>
+            <td> &emsp; &emsp; </td>
+            <td colspan="2"><img src="QRCode.png"style="width: 80px; height: 80px; display: block; margin: 0 auto;"></td>
+            
+        </tr>
+
+    </table>
+
+    </div>
+    </div>
 <div id="cod-entrada"></div>
-    
+
+<script>
+    /**
+     * Função que intercepta o envio do formulário e redireciona.
+     * @param {Event} event - O evento de submissão do formulário.
+     */
+    function redirecionarSucesso(event) {
+        // 1. Previne o envio padrão do formulário (que iria para o PHP)
+        event.preventDefault();
+
+        // 2. Opcional: Aqui você faria validações visuais no lado do cliente
+        // Se as validações falharem, você pode retornar e mostrar um erro (ex: alert)
+        // Se todas as validações de campo passarem...
+
+        // 3. Simula o sucesso do envio ao servidor
+        console.log("Simulando salvamento de dados...");
+        
+        // 4. Redireciona o usuário para a página de validação visual (pag3.html)
+        // O valor do 'setTimeout' é apenas para dar um efeito de "processamento" na apresentação.
+        setTimeout(function() {
+            window.location.href = 'pag3.html';
+        }, 500); // Redireciona após 0.5 segundos
+
+        return false; // Garante que a submissão padrão não ocorra
+    }
+</script>
 
 
 </body>
 </html>
-
-
